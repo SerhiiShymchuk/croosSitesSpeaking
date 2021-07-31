@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>site 3</title>
+</head>
+
+<body>
+    <div>
+        <h2>site 3</h2>
+    </div>
+    <button id="sendMsg3">Отправить сообщение на сайт 2</button>
+    <input id="textMsg3" type="text">
+    <script>
+        window.onmessage = function (event) {
+            if (event.data) {
+                document.getElementById('textMsg3').value = event.data
+            }
+        };
+        document.getElementById('sendMsg3').addEventListener('click', (e) => {
+            e.preventDefault()
+            const msg = document.getElementById('textMsg3').value
+            document.getElementById('textMsg3').value = ''
+            window.top.postMessage(msg, '*')
+            //console.log(window.top);
+        })
+    </script>
+</body>
+
+</html>
