@@ -29,21 +29,20 @@
         <iframe id="iframe3" src="site3.html" frameborder="2" width="350px" height="200px"></iframe>
     </div>
     <script>
-        const iframe2 = document.getElementById('iframe2').contentWindow
-        const iframe3 = document.getElementById('iframe3').contentWindow
+        const iframe2 = document.getElementById('iframe2')
+        const iframe3 = document.getElementById('iframe3')
         
         window.addEventListener('message', function (event) {
-            if (event.source.location.href == document.getElementById('iframe2').src) {
+            const sourceTarget = event.source.location.href
+            const receivedData = event.data
+            if (sourceTarget == iframe2.src) {
                 //console.log(event);
-                const receivedData = event.data
-                iframe3.postMessage(receivedData, '*')
+                iframe3.contentWindow.postMessage(receivedData, '*')
                 
-            } else if (event.source.location.href == document.getElementById('iframe3').src) {
-                const receivedData = event.data
-                iframe2.postMessage(receivedData, '*')
+            } else if (sourceTarget == iframe3.src) {
+                iframe2.contentWindow.postMessage(receivedData, '*')
             }
-        }) 
-
+        })
     </script>
 </body>
 
