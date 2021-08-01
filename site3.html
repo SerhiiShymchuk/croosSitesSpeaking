@@ -21,7 +21,6 @@
             }
         };
         document.getElementById('sendMsg3').addEventListener('click', (e) => {
-            e.preventDefault()
             const msg = document.getElementById('textMsg3').value
             document.getElementById('textMsg3').value = ''
             window.top.postMessage(msg, '*')
