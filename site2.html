@@ -12,7 +12,7 @@
     <div>
         <h2>site 2</h2>
     </div>
-    <button id="sendMsg2" type="submit">Отправить сообщение на сайт 3</button>
+    <button id="sendMsg2">Отправить сообщение на сайт 3</button>
     <input id="textMsg2" type="text">
     <script>
         window.onmessage = function (event) {
@@ -21,7 +21,6 @@
             }
         };
         document.getElementById('sendMsg2').addEventListener('click', (e) => {
-            e.preventDefault()
             const msg = document.getElementById('textMsg2').value
             document.getElementById('textMsg2').value = ''
             window.top.postMessage(msg, '*')
